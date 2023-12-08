@@ -6,7 +6,6 @@ import {getCurrentTab, changeMyPassword, addTabDataStorage, loadTabs, showMyTabs
 
 var image = await document.querySelector(".extensionLogo");
 image.setAttribute("src", chrome.runtime.getURL("logo.png"));
-console.log(chrome.runtime.getURL("logo.png"));
 
 // favIconUrl, url
 const addTabData = document.querySelector(".addTabData");
@@ -258,7 +257,7 @@ changePassword.addEventListener("click", async () => {
         await localStorage.set({"passwordHash":hash(password.value)});
         await sessionStorage.set({"password":password.value});
         await sessionStorage.set({"isEncrypted":"False"});
-        showMyTabs();
+        await showMyTabs();
       }
   });
   }

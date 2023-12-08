@@ -63,13 +63,13 @@ function addTab(data) {
         var confirm = document.createElement("BUTTON");
         confirm.textContent = "Confirm";
         confirm.onclick = async ()=>{
-            await removeTab(data["name"]);
-            showMyTabs();
+          await removeTab(data["name"]);
+          await showMyTabs();
         }
         var cancel = document.createElement("BUTTON");
         cancel.textContent = "Cancel";
         cancel.onclick = async ()=>{
-            showMyTabs();
+          await showMyTabs();
         }
 
         confirmationContainer.append(text);
@@ -79,9 +79,13 @@ function addTab(data) {
         document.querySelector("ul").replaceChildren();
         document.querySelector("ul").append(confirmationContainer);
     });
-    icon.src =  data["favIcon"];
+
+    if(data["favIcon"] !== "")
+    {
+      icon.src =  data["favIcon"];
+      container.append(icon);
+    }
     container.append(text);
-    container.append(icon);
 
     document.querySelector("ul").append(container);
 }
@@ -120,7 +124,7 @@ async function addTabDataStorage(data)
             await localStorage.set({"savedTabs":[encData]})
         }
     }
-    showMyTabs()
+    await showMyTabs()
 }
 
 async function loadTabs()
@@ -147,7 +151,7 @@ async function loadTabs()
         }
       }
     }
-    showMyTabs();
+    await showMyTabs();
 }
 
 async function removeTab(tabName)
@@ -204,7 +208,7 @@ async function changeMyPassword(password)
           }
         }
     }
-    showMyTabs();
+    await showMyTabs();
 }
 
 async function showMyTabs()
@@ -216,16 +220,11 @@ async function showMyTabs()
     if(isEncrypted == "False")
     {
         mainScreen();
-        document.querySelector("ul").replaceChildren();
+        await document.querySelector("ul").replaceChildren();
 
         var savedTabs = await sessionStorage.get(["savedTabs"]).then((result) => {
           return result.savedTabs;
         });
-
-        console.log(savedTabs);
-        console.log(await localStorage.get(["savedTabs"]).then((result) => {
-          return result.savedTabs;
-        }));
 
         if(savedTabs !== undefined)
         {

@@ -19,10 +19,6 @@ limitations under the License.
   -ms-user-select: none;      /* IE 10+ */
   user-select: none;          /* Likely future */ 
 }
-body {
-  width:fit-content;
-  height: fit-content;
-}
 
 ul {
   list-style-type: none;
@@ -33,54 +29,12 @@ ul {
 li {
   padding: 0.25rem;
 }
-li:nth-child(odd) {
-  background: #80808030;
-}
-li:nth-child(even) {
-  background: #ffffff;
-}
-
-h3,
-p {
-  margin: 0;
-}
 
 .Hide{
   visibility: hidden;
   width: 0px;
   height: 0px;
   overflow: hidden;
-}
-
-.tabInfo
-{
-  margin: auto;
-  overflow-x: hidden;
-  overflow-y: hidden;
-  margin-top: 0.5rem;
-}
-
-.tabInfo .favIcon
-{
-  display: inline-block;
-  height: 2.5rem;
-  width: 2.5rem;
-  align-self: flex-end;
-}
-
-.tabInfo .tabName
-{
-  display: inline-block;
-  height: fit-content;
-  width: 17.5rem;
-  overflow-x: hidden;
-  overflow-y: hidden;
-  align-self: flex-end;
-}
-
-.logo
-{
-  width: 20rem;
 }
 
 button {
