@@ -42,6 +42,7 @@ function refreshPasswordInput()
   passwordInput.setAttribute("type", "password");
   passwordInput.setAttribute("id", "password");
   passwordInput.setAttribute("className", "password");
+  passwordInput.setAttribute("placeholder", "password");
 };
 function refreshPasswordVerifyInput()
 {
@@ -49,6 +50,7 @@ function refreshPasswordVerifyInput()
   passwordVerifyInput.setAttribute("type", "password");
   passwordVerifyInput.setAttribute("id", "passwordVerify");
   passwordVerifyInput.setAttribute("className", "passwordVerify");
+  passwordVerifyInput.setAttribute("placeholder", "confirm password");
 };
 function refreshUrlInput()
 {
@@ -203,8 +205,8 @@ addTabManually.addEventListener("click", async () => {
     
     await document.querySelector("ul").append(urlInput);
     await document.querySelector("ul").append(nameInput);
-    await document.querySelector("ul").append(cancelButton);
     await document.querySelector("ul").append(addTabManualSubmit);
+    await document.querySelector("ul").append(cancelButton);
 
     addTabManualSubmit.addEventListener("click", async () => 
     {
@@ -233,8 +235,8 @@ changePassword.addEventListener("click", async () => {
     document.querySelector("ul").replaceChildren();
 
     await document.querySelector("ul").append(passwordInput);
-    await document.querySelector("ul").append(setPasswordButton);
     await document.querySelector("ul").append(passwordVerifyInput);
+    await document.querySelector("ul").append(setPasswordButton);
     await document.querySelector("ul").append(cancelButton);
 
     setPasswordButton.addEventListener("click", async () => {
@@ -250,6 +252,7 @@ changePassword.addEventListener("click", async () => {
         await localStorage.set({"passwordHash":hash(password.value)});
         await sessionStorage.set({"password":password.value});
         await sessionStorage.set({"isEncrypted":"False"});
+        showMyTabs();
       }
   });
   }

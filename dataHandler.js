@@ -204,6 +204,7 @@ async function changeMyPassword(password)
           }
         }
     }
+    showMyTabs();
 }
 
 async function showMyTabs()
@@ -220,6 +221,12 @@ async function showMyTabs()
         var savedTabs = await sessionStorage.get(["savedTabs"]).then((result) => {
           return result.savedTabs;
         });
+
+        console.log(savedTabs);
+        console.log(await localStorage.get(["savedTabs"]).then((result) => {
+          return result.savedTabs;
+        }));
+
         if(savedTabs !== undefined)
         {
           for (const tab of savedTabs) {
