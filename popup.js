@@ -2,6 +2,12 @@ import AesCtr from './aes-ctr.js';
 import hash from './hash.js';
 
 import {getCurrentTab, changeMyPassword, addTabDataStorage, loadTabs, showMyTabs, keepMeSafe, mainScreen} from "./dataHandler.js";
+
+
+var image = await document.querySelector(".extensionLogo");
+image.setAttribute("src", chrome.runtime.getURL("logo.png"));
+console.log(chrome.runtime.getURL("logo.png"));
+
 // favIconUrl, url
 const addTabData = document.querySelector(".addTabData");
 const decrypt = document.querySelector(".decrypt");
@@ -119,8 +125,8 @@ setPassword.addEventListener("click", async () => {
   if(currentHash === "First Use")
   {
     await document.querySelector("ul").append(passwordInput);
-    await document.querySelector("ul").append(setPasswordButton);
     await document.querySelector("ul").append(passwordVerifyInput);
+    await document.querySelector("ul").append(setPasswordButton);
 
     setPasswordButton.addEventListener("click", async () => {
       const password = await document.getElementById("password");
