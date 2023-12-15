@@ -1,5 +1,6 @@
 chrome.runtime.onStartup.addListener(async function() {
     const sessionStorage = chrome.storage.session;
+    await sessionStorage.clear();
     await sessionStorage.set({"isEncrypted":"True"}); 
 });
 
